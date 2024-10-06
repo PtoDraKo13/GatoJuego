@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bguojnp83evsn"
-path="res://.godot/imported/static_items.png-ed93d553b3f8900b4f868ebee97cc910.ctex"
+uid="uid://pjxvoms4akpd"
+path="res://.godot/imported/animated_items.png-a4f9ceb371a7a6ce83e19fc24949aa7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/platformer items - free assets/static_items.png"
-dest_files=["res://.godot/imported/static_items.png-ed93d553b3f8900b4f868ebee97cc910.ctex"]
+source_file="res://assets/sprites/animated_items.png"
+dest_files=["res://.godot/imported/animated_items.png-a4f9ceb371a7a6ce83e19fc24949aa7a.ctex"]
 
 [params]
 
