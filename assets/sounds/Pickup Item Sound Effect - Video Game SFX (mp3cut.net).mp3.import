@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bkkc6fkg2uh2o"
+path="res://.godot/imported/Pickup Item Sound Effect - Video Game SFX (mp3cut.net).mp3-35eb24dad112790099d0384fe0c6e41e.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Pickup Item Sound Effect - Video Game SFX (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Pickup Item Sound Effect - Video Game SFX (mp3cut.net).mp3-35eb24dad112790099d0384fe0c6e41e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
