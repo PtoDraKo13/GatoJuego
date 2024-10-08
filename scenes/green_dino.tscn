@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://do44jybf5pg1x"]
+
+[ext_resource type="Texture2D" uid="uid://bgubl10xkv7ov" path="res://assets/sprites/DinoSprites - vita.png" id="1_og2vd"]
+[ext_resource type="Script" path="res://scripts/green_dino.gd" id="1_yqv87"]
+[ext_resource type="PackedScene" uid="uid://dvoxb11puhlle" path="res://scenes/killzone.tscn" id="2_nnfsc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyykt"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asxof"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l3t8"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oll5"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ad3y"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm0dk"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjx6q"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yup4w"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxsll"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f36sr"]
+atlas = ExtResource("1_og2vd")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56w1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyykt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asxof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l3t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oll5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ad3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm0dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjx6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yup4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxsll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f36sr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7swti"]
+size = Vector2(10, 13.5)
+
+[node name="Green Dino" type="Node2D"]
+script = ExtResource("1_yqv87")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_56w1m")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="Killzone" parent="." instance=ExtResource("2_nnfsc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_7swti")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(3, 0)
+target_position = Vector2(0, 10)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-3, 0)
+target_position = Vector2(0, 10)
