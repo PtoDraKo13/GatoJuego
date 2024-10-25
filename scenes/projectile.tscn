@@ -1,60 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://chf04g843o8l0"]
+[gd_scene load_steps=9 format=3 uid="uid://bgf65x0ns8g8x"]
 
 [ext_resource type="Texture2D" uid="uid://cwcnakh257qri" path="res://assets/sprites/All_Fire_Bullet_Pixel_16x16_02.png" id="1_41oxp"]
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_jnb6v"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mi088"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_upi6q"]
 atlas = ExtResource("1_41oxp")
 region = Rect2(576, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2m4f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_12n08"]
 atlas = ExtResource("1_41oxp")
 region = Rect2(592, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bp3p2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qohgg"]
 atlas = ExtResource("1_41oxp")
 region = Rect2(608, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_np0ej"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjesn"]
 atlas = ExtResource("1_41oxp")
 region = Rect2(624, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8wvm6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqkc5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mi088")
+"texture": SubResource("AtlasTexture_upi6q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l2m4f")
+"texture": SubResource("AtlasTexture_12n08")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bp3p2")
+"texture": SubResource("AtlasTexture_qohgg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_np0ej")
+"texture": SubResource("AtlasTexture_qjesn")
 }],
 "loop": true,
 "name": &"shot",
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rslmw"]
-radius = 6.0
-height = 12.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_538x2"]
+radius = 7.0
 
 [node name="Projectile" type="Area2D"]
-input_pickable = false
+collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_jnb6v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.5, 1.5)
-scale = Vector2(0.8125, 0.8125)
-sprite_frames = SubResource("SpriteFrames_8wvm6")
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_rqkc5")
 animation = &"shot"
 autoplay = "shot"
-frame_progress = 0.569591
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
-shape = SubResource("CapsuleShape2D_rslmw")
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_538x2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

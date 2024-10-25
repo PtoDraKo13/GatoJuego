@@ -1,8 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://do44jybf5pg1x"]
+[gd_scene load_steps=17 format=3 uid="uid://do44jybf5pg1x"]
 
 [ext_resource type="Texture2D" uid="uid://bgubl10xkv7ov" path="res://assets/sprites/DinoSprites - vita.png" id="1_og2vd"]
 [ext_resource type="Script" path="res://scripts/green_dino.gd" id="1_yqv87"]
 [ext_resource type="PackedScene" uid="uid://dvoxb11puhlle" path="res://scenes/killzone.tscn" id="2_nnfsc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcxwi"]
+size = Vector2(8, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyykt"]
 atlas = ExtResource("1_og2vd")
@@ -88,26 +91,45 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7swti"]
-size = Vector2(10, 13.5)
+size = Vector2(12, 13.5)
 
-[node name="Green Dino" type="Node2D"]
+[node name="Green Dino" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_yqv87")
 
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rcxwi")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_56w1m")
 animation = &"walk"
 autoplay = "walk"
 
 [node name="Killzone" parent="." instance=ExtResource("2_nnfsc")]
+position = Vector2(0, -1)
+collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 0.75)
+[node name="Killzone" type="CollisionShape2D" parent="Killzone"]
+light_mask = 4
+visibility_layer = 2
 shape = SubResource("RectangleShape2D_7swti")
+debug_color = Color(0.958786, 0.176196, 0.268001, 0.42)
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
-position = Vector2(3, 0)
-target_position = Vector2(0, 10)
+[node name="Ray Casts" type="Node" parent="."]
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-position = Vector2(-3, 0)
-target_position = Vector2(0, 10)
+position = Vector2(-1, 0)
+target_position = Vector2(-7, 0)
+
+[node name="RayCastBottomRight" type="RayCast2D" parent="."]
+position = Vector2(3, -1)
+target_position = Vector2(0, 8)
+
+[node name="RayCastBottomLeft" type="RayCast2D" parent="."]
+position = Vector2(-3, -1)
+target_position = Vector2(0, 8)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(7, 0)

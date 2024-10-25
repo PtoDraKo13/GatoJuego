@@ -149,6 +149,7 @@ _data = {
 }
 
 [node name="Rainbow Orb" type="Area2D"]
+collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_rpx2y")
 

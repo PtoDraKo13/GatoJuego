@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-@onready var sfx_jump = $SFX_Jump
+@onready var sfx_dead: AudioStreamPlayer2D = $"Sound Effects/SFX_Dead"
+@onready var sfx_jump: AudioStreamPlayer2D = $"Sound Effects/SFX_Jump"
 @onready var collider = $CollisionShape2D
 @onready var timer: Timer = $Timer
 
 var SPEED = 110.0
 const JUMP_VELOCITY = -300.0
-var BULLET_SPEED = 400
 var DIRECTION
-var ATTACKING = false
+var ATTACKING
 var IS_RUNNING = false
 
 @onready var bullet = preload("res://scenes/projectile.tscn")
@@ -24,9 +24,6 @@ func shoot(delta):
 	get_parent().add_child(instBullet)
 	instBullet.body_position = animated_sprite.flip_h
 	instBullet.global_position = collider.global_position
-
-func _on_timer_timeout():
-	ATTACKING = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -77,8 +74,6 @@ func _physics_process(delta):
 			animated_sprite.play("jump")
 	else:
 		animated_sprite.play("attack")
-		timer.start()
-		_on_timer_timeout()
 		
 	#Apply movement
 	if direction:
@@ -87,3 +82,16 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite.animation == ("attack"):
+		ATTACKING = false
+
+func dead():
+	collider.queue_free()
+	sfx_dead.play()
+	timer.start()
+
+func _on_timer_timeout():
+	Engine.time_scale = 1
+	get_tree().reload_current_scene()

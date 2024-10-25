@@ -1,8 +1,9 @@
-[gd_scene load_steps=61 format=3 uid="uid://dwdyg341enw11"]
+[gd_scene load_steps=60 format=3 uid="uid://dwdyg341enw11"]
 
 [ext_resource type="Texture2D" uid="uid://cxuws3k7xt2pu" path="res://assets/sprites/Cat Sprite Sheet.png" id="1_22wuv"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_314t6"]
 [ext_resource type="AudioStream" uid="uid://e6b8sb6mawwc" path="res://assets/sounds/Jump Sound Effect (mp3cut.net).mp3" id="3_3uhb0"]
+[ext_resource type="AudioStream" uid="uid://c7ejj60b6csx2" path="res://assets/sounds/Kirby falling meme (mp3cut.net).mp3" id="4_f0d4n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3lqwa"]
 atlas = ExtResource("1_22wuv")
@@ -19,14 +20,6 @@ region = Rect2(64, 224, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbdo3"]
 atlas = ExtResource("1_22wuv")
 region = Rect2(96, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ov4pi"]
-atlas = ExtResource("1_22wuv")
-region = Rect2(128, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yxomc"]
-atlas = ExtResource("1_22wuv")
-region = Rect2(160, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j47yr"]
 atlas = ExtResource("1_22wuv")
@@ -238,16 +231,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vbdo3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ov4pi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yxomc")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 8.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.2,
@@ -428,29 +415,40 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07s47"]
-radius = 4.0
-height = 8.0
+radius = 6.0
+height = 12.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 21
 script = ExtResource("1_314t6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_ag6hq")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.132391
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
 position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_07s47")
 
-[node name="SFX_Jump" type="AudioStreamPlayer2D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.191
+one_shot = true
+
+[node name="Sound Effects" type="Node" parent="."]
+
+[node name="SFX_Jump" type="AudioStreamPlayer2D" parent="Sound Effects"]
 stream = ExtResource("3_3uhb0")
 volume_db = -8.433
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.23
-one_shot = true
+[node name="SFX_Dead" type="AudioStreamPlayer2D" parent="Sound Effects"]
+stream = ExtResource("4_f0d4n")
+volume_db = -14.991
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
