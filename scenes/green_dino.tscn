@@ -119,6 +119,9 @@ debug_color = Color(0.958786, 0.176196, 0.268001, 0.42)
 
 [node name="Ray Casts" type="Node" parent="."]
 
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(7, 0)
+
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-1, 0)
 target_position = Vector2(-7, 0)
@@ -130,6 +133,3 @@ target_position = Vector2(0, 8)
 [node name="RayCastBottomLeft" type="RayCast2D" parent="."]
 position = Vector2(-3, -1)
 target_position = Vector2(0, 8)
-
-[node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(7, 0)

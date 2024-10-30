@@ -11,12 +11,10 @@ var direction = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (not ray_cast_bottom_right.is_colliding()) or(ray_cast_bottom_right.is_colliding()):
-		print("AAAAAAAAAAAAAAAAAAAAAAA")
+	if not ray_cast_bottom_right.is_colliding() or ray_cast_right.is_colliding():
 		direction = -1
 		animated_sprite.flip_h = true
-	if (not ray_cast_bottom_left.is_colliding()) or(ray_cast_bottom_left.is_colliding()):
-		print("AAAAAAAAAAAAAAAAAAAAAAA")
+	if not ray_cast_bottom_left.is_colliding() or ray_cast_left.is_colliding():
 		direction = 1
 		animated_sprite.flip_h = false
 	

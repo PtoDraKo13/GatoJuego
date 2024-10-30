@@ -260,7 +260,7 @@ position = Vector2(-40, -134)
 position = Vector2(439, -71)
 
 [node name="Green Dino" parent="." groups=["Enemy"] instance=ExtResource("14_uhjoc")]
-position = Vector2(286, -120)
+position = Vector2(286, -119)
 
 [node name="Green Dino2" parent="." groups=["Enemy"] instance=ExtResource("14_uhjoc")]
 position = Vector2(-25, -7)
