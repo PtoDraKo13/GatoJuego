@@ -1,7 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuqaekf1py0w2"]
+[gd_scene load_steps=11 format=3 uid="uid://cuqaekf1py0w2"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_v6urq"]
-[ext_resource type="Texture2D" uid="uid://qebgarfu4hxo" path="res://assets/sprites/mondongo.jpg" id="2_6q87u"]
+[ext_resource type="Texture2D" uid="uid://b7wwt077cs4q0" path="res://assets/images/main_menu_background.png" id="2_s7gqb"]
+[ext_resource type="FontFile" uid="uid://cricger52307k" path="res://assets/fonts/GrapeSoda.ttf" id="3_qjcj4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0qjt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkjtl"]
+bg_color = Color(0.843137, 0.803922, 0.796078, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1wff"]
+bg_color = Color(0.647059, 0.647059, 0.647059, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awn8a"]
+bg_color = Color(0.960351, 0.960351, 0.960351, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.519967, 0.908259, 0.510865, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yr37n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04yon"]
+bg_color = Color(0.842857, 0.803749, 0.796411, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mrvr"]
+bg_color = Color(0.646029, 0.646029, 0.646029, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,7 +64,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6q87u")
+texture = ExtResource("2_s7gqb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -29,29 +74,66 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -190.5
-offset_top = -119.5
+offset_top = -52.0
 offset_right = 190.5
-offset_bottom = 119.5
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 20
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qjcj4")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u0qjt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vkjtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w1wff")
+theme_override_styles/normal = SubResource("StyleBoxFlat_awn8a")
 text = "Play"
-
-[node name="Options" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Options"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qjcj4")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yr37n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_04yon")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1mrvr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_awn8a")
 text = "Exit"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = -237.0
+offset_right = 329.5
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.755795, 0.845359, 0.552923, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 12
+theme_override_fonts/font = ExtResource("3_qjcj4")
+theme_override_font_sizes/font_size = 150
+text = "Gato-Juego"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
